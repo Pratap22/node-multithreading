@@ -31,8 +31,8 @@ app.get("/blocking", async (req, res) => {
   }
   try {
     const threadResults = await Promise.all(workerPromises);
-    // const total = threadResults.reduce((acc, curr) => acc + curr, 0);
-    res.send(`The result of the CPU intesive task is ${threadResults}\n`);
+    const total = threadResults.reduce((acc, curr) => acc + curr, 0);
+    res.send(`The result of the CPU intesive task is ${total}\n`);
   } catch (error) {
     res.status(404).send(`An error occured`, err.message);
   }
